@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STS Initiative — U.S. Small Business AI Adoption</title>
+  <meta name="description" content="Plain-language tools, visual frameworks, and sector-specific roadmaps helping America's 34.8 million small businesses confidently adopt AI." />
+
+  <!-- Playfair Display · Lora · DM Sans · Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ════ NAV ════ -->
+  <header class="nav" id="top">
+    <div class="nav__wrap">
+      <a href="#top" class="nav__brand">
+        <span class="nav__brand-mark">STS</span>
+        <span class="nav__brand-name">Strategic Communication &amp;<br>Visual Storytelling Initiative</span>
+      </a>
+      <nav class="nav__links" aria-label="Site sections">
+        <a href="#problem">The Problem</a>
+        <a href="#framework">Framework</a>
+        <a href="#approach">Approach</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#founder">About</a>
+      </nav>
+      <button class="nav__cta js-diag-open" aria-label="Take the free AI readiness diagnostic">
+        Take the Diagnostic
+      </button>
+      <button class="nav__hamburger js-menu-open" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true" role="dialog">
+    <div class="drawer__panel">
+      <button class="drawer__close js-menu-close" aria-label="Close menu">&times;</button>
+      <nav class="drawer__nav">
+        <a href="#problem"   class="js-menu-close">The Problem</a>
+        <a href="#framework" class="js-menu-close">The Framework</a>
+        <a href="#approach"  class="js-menu-close">Our Approach</a>
+        <a href="#evidence"  class="js-menu-close">The Evidence</a>
+        <a href="#founder"   class="js-menu-close">About the Founder</a>
+      </nav>
+      <button class="btn-primary btn-block js-diag-open js-menu-close">Take the Free Diagnostic</button>
+    </div>
+    <div class="drawer__scrim js-menu-close"></div>
+  </div>
+
+  <!-- ════ HERO ════ -->
+  <section class="hero" id="hero">
+    <div class="hero__inner">
+
+      <!-- Left: copy -->
+      <div class="hero__copy">
+        <p class="hero__kicker">United States · Small Business · AI Adoption</p>
+        <h1 class="hero__headline">
+          AI is not<br>
+          too <em>complex.</em><br>
+          It is too<br>
+          <span class="undermark">unclear.</span>
+        </h1>
+        <p class="hero__sub">
+          We give America's 34.8 million small business owners the plain-language tools, visual frameworks, and sector-specific roadmaps they need to confidently adopt AI.
+        </p>
+        <div class="hero__actions">
+          <a href="#framework" class="btn-primary">Explore the Framework</a>
+          <button class="btn-ghost js-diag-open">Take the Free Diagnostic</button>
+        </div>
+        <p class="hero__small">Free · No account required · 4 minutes</p>
+      </div>
+
+      <!-- Right: photo stack -->
+      <div class="hero__photos" aria-hidden="true">
+        <div class="hero__photo-a">
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=82"
+            alt="A small business owner reviewing data on a tablet"
+            loading="eager"
+          />
+        </div>
+        <div class="hero__photo-b">
+          <img
+            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=80"
+            alt="A small business owner at their shop counter"
+            loading="eager"
+          />
+          <div class="hero__photo-tag">America's Main Street</div>
+        </div>
+        <!-- Decorative stat bubble -->
+        <div class="hero__bubble">
+          <span class="hero__bubble-num">82</span>
+          <span class="hero__bubble-pct">%</span>
+          <p>say AI is "not applicable" to them</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="hero__stats-strip">
+      <div class="stat-pill">
+        <span class="stat-pill__num">82%</span>
+        <span class="stat-pill__text">say AI doesn't apply to them — SBA, 2025</span>
+      </div>
+      <span class="stat-pill__sep" aria-hidden="true">✦</span>
+      <div class="stat-pill">
+        <span class="stat-pill__num">18%</span>
+        <span class="stat-pill__text">of U.S. firms have integrated AI — Fed Reserve, 2026</span>
+      </div>
+      <span class="stat-pill__sep" aria-hidden="true">✦</span>
+      <div class="stat-pill">
+        <span class="stat-pill__num">15 yrs</span>
+        <span class="stat-pill__text">projected lag for smallest firms — Census Bureau, 2024</span>
+      </div>
+      <span class="stat-pill__sep" aria-hidden="true">✦</span>
+      <div class="stat-pill">
+        <span class="stat-pill__num">47%</span>
+        <span class="stat-pill__text">as productive as large firms — Fed Reserve, Atlanta</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ THE PROBLEM ════ -->
+  <section class="problem" id="problem">
+    <div class="problem__inner">
+
+      <div class="problem__label-col" aria-hidden="true">
+        <span class="rotated-label">§ 01</span>
+        <div class="rotated-label__line"></div>
+      </div>
+
+      <div class="problem__content">
+        <header class="problem__head">
+          <p class="section-kicker">The Problem</p>
+          <h2 class="section-title">
+            America's small businesses are being<br>
+            left behind — <em>not by technology,<br>but by communication.</em>
+          </h2>
+        </header>
+
+        <div class="problem__body">
+          <div class="problem__text">
+            <p class="drop-cap">
+              AI is reshaping the American economy. Large corporations are embedding it into every layer of their operations, widening a productivity gap that already leaves small businesses operating at less than half their potential.
+            </p>
+            <p>
+              The barrier is not technical. Federal data shows that most small business owners have simply never received a clear, accessible explanation of what AI could do for their specific operation.
+            </p>
+            <p class="problem__callout">
+              The gap is one of <em>communication.</em>
+            </p>
+          </div>
+
+          <figure class="problem__photo">
+            <img
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80"
+              alt="A small shop on an American main street"
+              loading="lazy"
+            />
+            <figcaption>Main Street, U.S.A. — where 43.5% of GDP is generated.</figcaption>
+          </figure>
+        </div>
+
+        <div class="problem__three-stats">
+          <div class="tri-stat">
+            <div class="tri-stat__num">43.5<em>%</em></div>
+            <p>of U.S. GDP is generated by small businesses</p>
+            <cite>SBA Office of Advocacy, 2024</cite>
+          </div>
+          <div class="tri-stat">
+            <div class="tri-stat__num">62<em>M</em></div>
+            <p>American workers employed by small businesses, driving 55% of all net new job creation</p>
+            <cite>Bureau of Labor Statistics, 2024</cite>
+          </div>
+          <div class="tri-stat">
+            <div class="tri-stat__num">$81.7<em>B</em></div>
+            <p>in private AI investment projected for 2025 — flowing almost exclusively to large enterprises</p>
+            <cite>Congressional Research Service, 2024</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ THE FRAMEWORK ════ -->
+  <section class="framework" id="framework">
+    <div class="framework__inner">
+
+      <div class="framework__header">
+        <div class="framework__label-col" aria-hidden="true">
+          <span class="rotated-label rotated-label--light">§ 02</span>
+          <div class="rotated-label__line rotated-label__line--light"></div>
+        </div>
+        <div class="framework__header-text">
+          <p class="section-kicker section-kicker--light">The Framework</p>
+          <h2 class="section-title section-title--light">
+            Six tools. One journey.<br><em>Every small business.</em>
+          </h2>
+          <p class="framework__sub">Six integrated components, each designed to meet a small business owner exactly where they are.</p>
+        </div>
+      </div>
+
+      <ol class="fw-steps">
+        <li class="fw-step" data-step="01">
+          <div class="fw-step__num" aria-hidden="true">01</div>
+          <div class="fw-step__body">
+            <p class="fw-step__q">Where do I start?</p>
+            <h3 class="fw-step__title">AI Adoption Diagnostic Tool</h3>
+            <p class="fw-step__desc">A plain-language self-assessment that identifies where AI fits in your specific operations and which resources are most relevant to your starting point.</p>
+            <button class="fw-step__cta js-diag-open">Start the diagnostic &rarr;</button>
+          </div>
+          <div class="fw-step__img">
+            <img src="https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=500&q=80" alt="Business owner reviewing information on a tablet" loading="lazy" />
+          </div>
+        </li>
+        <li class="fw-step" data-step="02">
+          <div class="fw-step__num" aria-hidden="true">02</div>
+          <div class="fw-step__body">
+            <p class="fw-step__q">What does this mean?</p>
+            <h3 class="fw-step__title">Plain-Language AI Glossary</h3>
+            <p class="fw-step__desc">A standardized, non-technical vocabulary resource that defines AI concepts in language any business owner or worker can understand.</p>
+            <a href="#glossary" class="fw-step__cta">Browse the glossary &rarr;</a>
+          </div>
+          <div class="fw-step__img">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Person reading a document carefully" loading="lazy" />
+          </div>
+        </li>
+        <li class="fw-step" data-step="03">
+          <div class="fw-step__num" aria-hidden="true">03</div>
+          <div class="fw-step__body">
+            <p class="fw-step__q">How do I talk about this?</p>
+            <h3 class="fw-step__title">Strategic Communication Modules</h3>
+            <p class="fw-step__desc">Structured guides that equip owners with the messaging tools to introduce AI to their workforce in ways that build trust, not resistance.</p>
+            <a href="#comms" class="fw-step__cta">Try the message generator &rarr;</a>
+          </div>
+          <div class="fw-step__img">
+            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=500&q=80" alt="Business owner speaking with their team" loading="lazy" />
+          </div>
+        </li>
+        <li class="fw-step" data-step="04">
+          <div class="fw-step__num" aria-hidden="true">04</div>
+          <div class="fw-step__body">
+            <p class="fw-step__q">How do I see this?</p>
+            <h3 class="fw-step__title">Visual Storytelling System</h3>
+            <p class="fw-step__desc">A multimedia framework that communicates AI's business value through visual narratives and infographics — built for non-technical audiences.</p>
+          </div>
+          <div class="fw-step__img">
+            <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?auto=format&fit=crop&w=500&q=80" alt="Visual data presentation" loading="lazy" />
+          </div>
+        </li>
+        <li class="fw-step" data-step="05">
+          <div class="fw-step__num" aria-hidden="true">05</div>
+          <div class="fw-step__body">
+            <p class="fw-step__q">How do I implement this?</p>
+            <h3 class="fw-step__title">Sector-Specific Adoption Roadmaps</h3>
+            <p class="fw-step__desc">Phased, actionable frameworks tailored to the operational realities of specific small business sectors.</p>
+            <a href="#roadmaps" class="fw-step__cta">See your roadmap &rarr;</a>
+          </div>
+          <div class="fw-step__img">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=80" alt="Business planning and roadmap" loading="lazy" />
+          </div>
+        </li>
+        <li class="fw-step" data-step="06">
+          <div class="fw-step__num" aria-hidden="true">06</div>
+          <div class="fw-step__body">
+            <p class="fw-step__q">Who has done this before me?</p>
+            <h3 class="fw-step__title">Peer Learning &amp; Case Study Library</h3>
+            <p class="fw-step__desc">A curated collection of successful AI implementation stories from small businesses across sectors and regions.</p>
+          </div>
+          <div class="fw-step__img">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=500&q=80" alt="Business owners sharing experiences" loading="lazy" />
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ════ PLAIN-LANGUAGE AI GLOSSARY ════ -->
+  <section class="glossary" id="glossary">
+    <div class="glossary__inner">
+      <header class="glossary__head">
+        <p class="section-kicker">Framework Component 02 · Plain-Language AI Glossary</p>
+        <h2 class="section-title">Every term, in plain <em>English.</em></h2>
+        <p class="glossary__sub">No jargon, and no assumed technical background. Search or browse — every entry below is written for a business owner, not an engineer.</p>
+        <div class="glossary__search">
+          <input type="search" id="glossarySearch" placeholder="Search a term — e.g. &ldquo;chatbot&rdquo; or &ldquo;automation&rdquo;" aria-label="Search the glossary" autocomplete="off" />
+        </div>
+      </header>
+
+      <dl class="glossary-list" id="glossaryList">
+        <div class="glossary-entry" data-term="artificial intelligence ai">
+          <dt>Artificial Intelligence (AI)</dt>
+          <dd>
+            <p class="glossary-entry__def">Software that can perform tasks — recognizing patterns, answering questions, making recommendations — that normally require human judgment.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>"AI" covers many different tools. The specific tool matters far more than the label.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="machine learning">
+          <dt>Machine Learning</dt>
+          <dd>
+            <p class="glossary-entry__def">A way of building AI where a system improves at a task by learning from examples, rather than being programmed with fixed rules.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Most everyday AI you already use — spam filters, recommendation engines — works this way.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="generative ai">
+          <dt>Generative AI</dt>
+          <dd>
+            <p class="glossary-entry__def">AI that creates new content — text, images, or audio — from a prompt, instead of just analyzing existing data.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>AI writing assistants and image generators fall into this category.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="large language model llm">
+          <dt>Large Language Model (LLM)</dt>
+          <dd>
+            <p class="glossary-entry__def">The technology behind AI chat tools, trained on huge amounts of text so it can hold conversations, answer questions, and draft writing.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>This is what powers most products marketed to you as an "AI assistant."</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="chatbot">
+          <dt>Chatbot</dt>
+          <dd>
+            <p class="glossary-entry__def">A program that holds a text or voice conversation with your customers — often to answer common questions or take orders.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Usually the lowest-cost, fastest entry point into AI for a small business.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="prompt">
+          <dt>Prompt</dt>
+          <dd>
+            <p class="glossary-entry__def">The instruction or question you type to an AI tool to get a response.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Better prompts get better results — this is a skill you build, not a technical setting.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="automation">
+          <dt>Automation</dt>
+          <dd>
+            <p class="glossary-entry__def">Using software to handle a repetitive task — scheduling, reminders, data entry — without a person doing it manually each time.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Automation existed before AI. AI just makes it more flexible and less brittle.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="ai agent">
+          <dt>AI Agent</dt>
+          <dd>
+            <p class="glossary-entry__def">An AI tool that can take multiple steps toward a goal on its own — like booking an appointment or drafting and sending a follow-up — rather than answering one question.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>The newer, more capable category of tool — and the one that needs the most human oversight.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="algorithm">
+          <dt>Algorithm</dt>
+          <dd>
+            <p class="glossary-entry__def">A set of steps a computer follows to solve a problem or make a decision.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Every AI tool runs on an algorithm — it isn't a mysterious or exotic idea.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="predictive analytics">
+          <dt>Predictive Analytics</dt>
+          <dd>
+            <p class="glossary-entry__def">Using past data, like sales history, to estimate what's likely to happen next, like next month's demand.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Directly useful for inventory, staffing, and cash-flow planning.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="natural language processing nlp">
+          <dt>Natural Language Processing (NLP)</dt>
+          <dd>
+            <p class="glossary-entry__def">The branch of AI focused on understanding and generating human language.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>What lets a chatbot understand a customer's actual question, not just match keywords.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="computer vision">
+          <dt>Computer Vision</dt>
+          <dd>
+            <p class="glossary-entry__def">AI that can interpret images or video — for example, scanning a receipt, reading a label, or checking shelf stock from a photo.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Relevant if your business handles a lot of physical inventory or paperwork.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="api application programming interface">
+          <dt>API (Application Programming Interface)</dt>
+          <dd>
+            <p class="glossary-entry__def">A way for two pieces of software to talk to each other automatically.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>If a vendor says their AI tool "integrates via API" with your point-of-sale or accounting software, this is what they mean.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="cloud software saas">
+          <dt>Cloud Software (SaaS)</dt>
+          <dd>
+            <p class="glossary-entry__def">Software you access online through a browser or app, rather than installing on one computer.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Most small-business AI tools work this way — no IT department required.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="ai hallucination">
+          <dt>AI Hallucination</dt>
+          <dd>
+            <p class="glossary-entry__def">When an AI tool confidently states something that is inaccurate or made up.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>The single most important reason to have a person review AI output before it reaches a customer.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="human in the loop">
+          <dt>Human-in-the-Loop</dt>
+          <dd>
+            <p class="glossary-entry__def">A setup where a person reviews or approves an AI tool's output before it's finalized.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>The safest way for a small business to start using AI — with a human still checking the work.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="data privacy">
+          <dt>Data Privacy</dt>
+          <dd>
+            <p class="glossary-entry__def">The practices that protect customer and business information from being misused or exposed when using digital tools, including AI.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>Know what a tool does with your customer data before you use it, not after.</p>
+          </dd>
+        </div>
+        <div class="glossary-entry" data-term="roi return on investment">
+          <dt>Return on Investment (ROI)</dt>
+          <dd>
+            <p class="glossary-entry__def">The value or savings a tool produces, compared to what it costs you.</p>
+            <p class="glossary-entry__why"><span>Why it matters</span>The only real test of whether an AI tool is worth it for your specific business.</p>
+          </dd>
+        </div>
+      </dl>
+      <p class="glossary-empty" id="glossaryEmpty" hidden>No terms match &ldquo;<span id="glossaryQuery"></span>.&rdquo; Try a different search.</p>
+    </div>
+  </section>
+
+  <!-- ════ SECTOR-SPECIFIC ADOPTION ROADMAPS ════ -->
+  <section class="roadmaps" id="roadmaps">
+    <div class="roadmaps__inner">
+      <header class="roadmaps__head">
+        <p class="section-kicker section-kicker--light">Framework Component 05 · Sector-Specific Adoption Roadmaps</p>
+        <h2 class="section-title section-title--light">A path built for <em>your kind of business.</em></h2>
+        <p class="roadmaps__sub">Pick your sector. Every roadmap follows the same four phases — get ready, start small, build confidence, make it standard — but each step is written for how your business actually operates.</p>
+      </header>
+
+      <div class="roadmaps__tabs" id="roadmapTabs" role="tablist" aria-label="Choose your sector">
+        <button class="roadmap-tab is-active" data-sector="retail" role="tab" aria-selected="true">Retail &amp; Food Service</button>
+        <button class="roadmap-tab" data-sector="professional" role="tab" aria-selected="false">Professional Services</button>
+        <button class="roadmap-tab" data-sector="manufacturing" role="tab" aria-selected="false">Local Manufacturing &amp; Trades</button>
+        <button class="roadmap-tab" data-sector="health" role="tab" aria-selected="false">Health &amp; Wellness</button>
+        <button class="roadmap-tab" data-sector="construction" role="tab" aria-selected="false">Construction &amp; Skilled Trades</button>
+      </div>
+
+      <ol class="roadmap-phases" id="roadmapPhases"></ol>
+    </div>
+  </section>
+
+  <!-- ════ STRATEGIC COMMUNICATION MODULES ════ -->
+  <section class="comms" id="comms">
+    <div class="comms__inner">
+      <header class="comms__head">
+        <p class="section-kicker">Framework Component 03 · Strategic Communication Modules</p>
+        <h2 class="section-title">Say it right the <em>first time.</em></h2>
+        <p class="comms__sub">Tell us what you're introducing and what's worrying the people you're talking to. We'll draft a short, ready-to-use script built for that exact situation — not a generic template.</p>
+      </header>
+
+      <div class="comms__panel">
+        <form class="comms-form" id="commsForm" novalidate>
+          <div class="comms-field">
+            <label for="commsWhat">What are you introducing?</label>
+            <input type="text" id="commsWhat" name="commsWhat" placeholder="e.g. a chatbot that answers customer questions after hours" maxlength="400" required>
+          </div>
+          <div class="comms-field">
+            <label for="commsConcern">What's the biggest worry about it?</label>
+            <input type="text" id="commsConcern" name="commsConcern" placeholder="e.g. that it means fewer hours for staff" maxlength="400" required>
+          </div>
+          <div class="comms-field-row">
+            <div class="comms-field">
+              <label for="commsAudience">Who are you talking to?</label>
+              <select id="commsAudience" name="commsAudience">
+                <option value="my whole team">My whole team</option>
+                <option value="one or two employees">One or two employees</option>
+                <option value="my customers">My customers</option>
+              </select>
+            </div>
+            <div class="comms-field">
+              <label for="commsTone">Tone</label>
+              <select id="commsTone" name="commsTone">
+                <option value="warm and direct">Warm and direct</option>
+                <option value="formal and reassuring">Formal and reassuring</option>
+                <option value="casual and upbeat">Casual and upbeat</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary comms-submit" id="commsSubmit">Generate my script &rarr;</button>
+          <p class="comms-note" id="commsNote">Free to try, a few generations per visit.</p>
+        </form>
+
+        <div class="comms-result" id="commsResult" hidden>
+          <div class="comms-result__head">
+            <p class="comms-result__label">Your Communication Script</p>
+            <button type="button" class="comms-result__again" id="commsAgain">Start over</button>
+          </div>
+          <div class="comms-result__body" id="commsResultBody"></div>
+        </div>
+
+        <div class="comms-error" id="commsError" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ OUR APPROACH ════ -->
+  <section class="approach" id="approach">
+    <div class="approach__bg">
+      <img
+        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=70"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+      />
+      <div class="approach__overlay"></div>
+    </div>
+
+    <div class="approach__inner">
+      <div class="approach__label-col" aria-hidden="true">
+        <span class="rotated-label rotated-label--ghost">§ 03</span>
+        <div class="rotated-label__line rotated-label__line--ghost"></div>
+      </div>
+
+      <div class="approach__content">
+        <p class="section-kicker section-kicker--amber">Our Approach</p>
+
+        <blockquote class="approach__big-quote">
+          The problem was never the technology. It was always <em>the message.</em>
+        </blockquote>
+
+        <div class="approach__cols">
+          <div class="approach__col">
+            <p>Technical training teaches people to use tools they haven't decided to trust yet. Consulting services are too expensive to scale. Government programs operate at the policy level — essential, but unable to reach the individual business owner in her specific community.</p>
+            <p>This initiative occupies the space none of those solutions can reach.</p>
+          </div>
+          <div class="approach__col approach__col--quote">
+            <figure class="approach__pullquote">
+              <span class="pullquote-mark">&ldquo;</span>
+              <blockquote>82% of the smallest small businesses cite the belief that AI is "not applicable" to their business as their primary reason for non-adoption.</blockquote>
+              <figcaption>— SBA Office of Advocacy, September 2025</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ WHO THIS IS FOR ════ -->
+  <section class="audience" id="audience">
+    <div class="audience__inner">
+      <div class="audience__label-col" aria-hidden="true">
+        <span class="rotated-label">§ 04</span>
+        <div class="rotated-label__line"></div>
+      </div>
+      <div class="audience__content">
+        <header class="audience__head">
+          <p class="section-kicker">Who This Is For</p>
+          <h2 class="section-title">
+            Built for every<br><em>American small business.</em>
+          </h2>
+          <p class="audience__sub">All six framework components are freely accessible — no membership, no subscription, no technical background required.</p>
+        </header>
+
+        <div class="audience-grid">
+          <article class="aud-tile aud-tile--tall">
+            <div class="aud-tile__img">
+              <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="Retail shop owner" loading="lazy" />
+            </div>
+            <div class="aud-tile__body">
+              <span class="aud-tile__roman">i.</span>
+              <h3>Retail &amp; Food Service</h3>
+              <p>Owners using AI for inventory, customer engagement, and operational efficiency.</p>
+            </div>
+          </article>
+
+          <article class="aud-tile">
+            <div class="aud-tile__img">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Professional services consultant" loading="lazy" />
+            </div>
+            <div class="aud-tile__body">
+              <span class="aud-tile__roman">ii.</span>
+              <h3>Professional Services</h3>
+              <p>Accountants, consultants, and service providers integrating AI into client-facing workflows.</p>
+            </div>
+          </article>
+
+          <article class="aud-tile">
+            <div class="aud-tile__img">
+              <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=600&q=80" alt="Small manufacturer at work" loading="lazy" />
+            </div>
+            <div class="aud-tile__body">
+              <span class="aud-tile__roman">iii.</span>
+              <h3>Local Manufacturing</h3>
+              <p>Small manufacturers seeking phased guidance for AI in production and supply chain.</p>
+            </div>
+          </article>
+
+          <article class="aud-tile aud-tile--tall">
+            <div class="aud-tile__img">
+              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Community group meeting" loading="lazy" />
+            </div>
+            <div class="aud-tile__body">
+              <span class="aud-tile__roman">iv.</span>
+              <h3>Community Stakeholders</h3>
+              <p>Educators, workforce developers, and local organizations supporting small business communities.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ THE EVIDENCE ════ -->
+  <section class="evidence" id="evidence">
+    <div class="evidence__inner">
+      <div class="evidence__label-col" aria-hidden="true">
+        <span class="rotated-label rotated-label--amber">§ 05</span>
+        <div class="rotated-label__line rotated-label__line--amber"></div>
+      </div>
+
+      <div class="evidence__content">
+        <header class="evidence__head">
+          <p class="section-kicker">The Evidence</p>
+          <h2 class="section-title">The urgency is<br><em>federally documented.</em></h2>
+          <p class="evidence__sub">Built on the findings of federal agencies — not projections or opinions.</p>
+        </header>
+
+        <div class="evidence-blocks">
+          <div class="evid-block">
+            <div class="evid-block__num">1.3<span>%</span></div>
+            <div class="evid-block__rule"></div>
+            <p>Annualized GDP boost from AI investment in H1 2025 — contingent on broad adoption across all business sizes.</p>
+            <cite>White House Council of Economic Advisers, January 2026</cite>
+          </div>
+          <div class="evid-block">
+            <div class="evid-block__num">2.2<span>hrs</span></div>
+            <div class="evid-block__rule"></div>
+            <p>Saved per worker per week by AI users — a gain that scales to tens of billions in annual value across small business workers nationally.</p>
+            <cite>Federal Reserve Bank of St. Louis</cite>
+          </div>
+          <div class="evid-block">
+            <div class="evid-block__num">13.7<span>%</span></div>
+            <div class="evid-block__rule"></div>
+            <p>of AI-adopting firms grew their workforce, versus only 6.9% that saw reductions. <strong>AI adoption creates jobs.</strong></p>
+            <cite>National Center for Science &amp; Engineering Statistics</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ ABOUT THE FOUNDER ════ -->
+  <section class="founder" id="founder">
+    <div class="founder__inner">
+
+      <figure class="founder__portrait">
+        <div class="founder__portrait-wrap">
+          <img
+            src="../images/harriet.jpg"
+            onerror="this.onerror=null; this.src='../images/harriet-placeholder.svg';"
+            alt="Portrait of Harriet Oghogho, founder of the STS Initiative"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="founder__caption">
+          <span class="founder__caption-name">Harriet Oghogho</span>
+          <span class="founder__caption-role">Founder &amp; Principal</span>
+        </figcaption>
+      </figure>
+
+      <div class="founder__copy">
+        <div class="founder__label-col" aria-hidden="true">
+          <span class="rotated-label">§ 06</span>
+        </div>
+        <div class="founder__text">
+          <p class="section-kicker">About the Founder</p>
+          <h2 class="founder__title">A communicator's answer<br>to a <em>communication problem.</em></h2>
+          <p class="founder__bio">
+            Harriet Oghogho is the founder of the United States Small Business AI Adoption Strategic Communication and Visual Storytelling Initiative. A valedictorian graduate of Stillman College and a full-tuition scholar at Carnegie Mellon University, she brings hands-on experience from <strong>NVIDIA</strong> and advanced expertise at the intersection of strategic communication, narrative design, and media strategy — the precise combination of disciplines the AI adoption challenge demands.
+          </p>
+
+          <table class="cred-table">
+            <tbody>
+              <tr>
+                <td class="cred-table__abbr">B.A.</td>
+                <td class="cred-table__text">English &amp; Communication, Stillman College</td>
+              </tr>
+              <tr>
+                <td class="cred-table__abbr">M.S.</td>
+                <td class="cred-table__text">Entertainment Industry Management, Carnegie Mellon University</td>
+              </tr>
+              <tr>
+                <td class="cred-table__abbr">&#9733;</td>
+                <td class="cred-table__text">Valedictorian — Stillman College</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CLOSING CTA ════ -->
+  <section class="cta-block" id="cta">
+    <div class="cta-block__inner">
+      <p class="cta-block__kicker">Begin where you are.</p>
+      <h2 class="cta-block__headline">
+        Your business doesn't need<br>
+        a technical team to adopt AI.<br>
+        It needs a <em>clear path.</em>
+      </h2>
+      <p class="cta-block__sub">Start with the diagnostic tool. Find out where AI fits in your business today.</p>
+      <button class="btn-primary btn-large js-diag-open">
+        Begin the Journey
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__mark">STS</span>
+        <p class="footer__mission">Bridging the AI adoption gap among America's small businesses through strategic communication and visual storytelling.</p>
+      </div>
+      <nav class="footer__nav">
+        <div class="footer__col">
+          <p class="footer__col-head">Sections</p>
+          <a href="#problem">The Problem</a>
+          <a href="#framework">The Framework</a>
+          <a href="#glossary">The Glossary</a>
+          <a href="#roadmaps">The Roadmaps</a>
+          <a href="#comms">The Message Generator</a>
+          <a href="#evidence">The Evidence</a>
+        </div>
+        <div class="footer__col">
+          <p class="footer__col-head">Initiative</p>
+          <a href="#founder">About the Founder</a>
+          <a href="#approach">Our Approach</a>
+          <button class="footer__link-btn js-diag-open">Take the Diagnostic</button>
+        </div>
+        <div class="footer__col">
+          <p class="footer__col-head">Origin</p>
+          <p>The United States of America</p>
+          <p>Est. 2026</p>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__base">
+      <div class="footer__base-inner">
+        <span>&copy; 2026 STS Initiative</span>
+        <span>All federal data cited from public-domain sources.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════ DIAGNOSTIC MODAL ════ -->
+  <div class="diag-modal" id="diagModal" role="dialog" aria-modal="true" aria-labelledby="diagTitle" hidden>
+    <div class="diag-modal__scrim js-diag-close"></div>
+    <div class="diag-modal__box">
+
+      <!-- Header -->
+      <div class="diag-header">
+        <div>
+          <h2 class="diag-header__title" id="diagTitle">AI Readiness Diagnostic</h2>
+          <p class="diag-header__meta">Free &nbsp;·&nbsp; No account &nbsp;·&nbsp; ~4 minutes</p>
+        </div>
+        <button class="diag-header__close js-diag-close" aria-label="Close">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <!-- Progress -->
+      <div class="diag-progress" aria-hidden="true">
+        <div class="diag-progress__track">
+          <div class="diag-progress__fill" id="diagProgress"></div>
+        </div>
+        <p class="diag-progress__label" id="diagStepLabel" aria-live="polite"></p>
+      </div>
+
+      <!-- Question area -->
+      <div class="diag-body" id="diagBody"></div>
+
+      <!-- Controls -->
+      <div class="diag-controls" id="diagControls">
+        <button class="btn-ghost" id="diagBack" disabled>Back</button>
+        <button class="btn-primary" id="diagNext">Next</button>
+      </div>
+
+      <!-- Results -->
+      <div class="diag-results" id="diagResults" hidden>
+        <div id="diagResultContent"></div>
+
+        <div class="report-cta" id="reportCta">
+          <p class="report-cta__text">Want a full action plan built specifically for your business — time savings, revenue opportunities, cost cuts that don't touch your team, and what to do first?</p>
+          <button type="button" class="btn-primary" id="reportCtaBtn">Get My Full AI Action Plan &rarr;</button>
+        </div>
+
+        <form class="report-form" id="reportForm" hidden novalidate>
+          <div class="report-field">
+            <label for="reportBizName">Business name</label>
+            <input type="text" id="reportBizName" name="reportBizName" maxlength="120" required>
+          </div>
+          <div class="report-field">
+            <label for="reportLocation">City &amp; state</label>
+            <input type="text" id="reportLocation" name="reportLocation" placeholder="e.g. Dayton, Ohio" maxlength="120" required>
+          </div>
+          <button type="submit" class="btn-primary" id="reportSubmit">Build My Action Plan &rarr;</button>
+          <p class="report-note">Nothing is stored — your business name and location are only used to write this one plan, and you can download it as a PDF when it's ready.</p>
+        </form>
+
+        <div class="report-loading" id="reportLoading" hidden>
+          <div class="report-loading__spinner" aria-hidden="true"></div>
+          <p class="report-loading__msg" id="reportLoadingMsg">Reading your answers&hellip;</p>
+        </div>
+
+        <div class="report-error" id="reportError" hidden></div>
+
+        <div class="report-full" id="reportFull" hidden></div>
+
+        <div class="diag-results__actions">
+          <button class="btn-primary" onclick="window.print()">Print Results</button>
+          <button class="btn-ghost" id="diagRetake">Retake Diagnostic</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
