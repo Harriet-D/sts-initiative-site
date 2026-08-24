@@ -751,19 +751,29 @@
     reportMsgTimer = null;
   }
 
+  // Guards against the AI's response coming back slightly differently
+  // shaped than expected (e.g. one object instead of a list of them) —
+  // the Worker normalizes this too, but the page shouldn't crash even
+  // if it somehow receives something unexpected.
+  function asArray(val) {
+    if (Array.isArray(val)) return val;
+    if (val === null || val === undefined || val === '') return [];
+    return [val];
+  }
+
   function renderReport(data, businessName, location) {
-    const listItems = (items) => (items || []).map(it => `
-      <li><strong>${escapeHtml(it.title)}</strong><span>${escapeHtml(it.detail)}</span></li>
+    const listItems = (items) => asArray(items).map(it => `
+      <li><strong>${escapeHtml(it && it.title)}</strong><span>${escapeHtml(it && it.detail)}</span></li>
     `).join('');
 
-    const toolItems = (data.recommended_tools || []).map(t => `
-      <li><strong>${escapeHtml(t.name)}</strong><span>${escapeHtml(t.why)}</span></li>
+    const toolItems = asArray(data.recommended_tools).map(t => `
+      <li><strong>${escapeHtml(t && t.name)}</strong><span>${escapeHtml(t && t.why)}</span></li>
     `).join('');
 
-    const phases = (data.plan_30_60_90 || []).map(p => `
+    const phases = asArray(data.plan_30_60_90).map(p => `
       <div class="report-phase">
-        <p class="report-phase__label">${escapeHtml(p.phase)}</p>
-        <ul>${(p.actions || []).map(a => `<li>${escapeHtml(a)}</li>`).join('')}</ul>
+        <p class="report-phase__label">${escapeHtml(p && p.phase)}</p>
+        <ul>${asArray(p && p.actions).map(a => `<li>${escapeHtml(a)}</li>`).join('')}</ul>
       </div>
     `).join('');
 
