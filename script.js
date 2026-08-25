@@ -411,6 +411,18 @@
     document.body.style.overflow = 'hidden';
     renderQ(0);
     closeDrawer();
+
+    // Reset the results screen back to page 1, and clear out any
+    // previously-built action plan so a retake starts fresh.
+    if (diagPageSummary && diagPageReport) {
+      diagPageSummary.hidden = false;
+      diagPageReport.hidden = true;
+    }
+    if (reportForm) reportForm.reset();
+    if (reportSubmit) reportSubmit.disabled = true;
+    if (reportError) reportError.hidden = true;
+    if (reportFull) { reportFull.hidden = true; reportFull.innerHTML = ''; }
+    if (reportPrintable) reportPrintable.innerHTML = '';
     // focus the panel for keyboard users
     setTimeout(() => {
       const panel = modal.querySelector('.diag-modal__box');
@@ -703,14 +715,31 @@
      are never touched by any of this. */
   const REPORT_WORKER_URL = COMMS_WORKER_URL;
 
-  const reportCta       = document.getElementById('reportCta');
+  const diagPageSummary = document.getElementById('diagPageSummary');
+  const diagPageReport  = document.getElementById('diagPageReport');
   const reportCtaBtn    = document.getElementById('reportCtaBtn');
+  const reportBack      = document.getElementById('reportBack');
   const reportForm      = document.getElementById('reportForm');
   const reportSubmit    = document.getElementById('reportSubmit');
   const reportLoading   = document.getElementById('reportLoading');
   const reportLoadingMsg = document.getElementById('reportLoadingMsg');
   const reportError     = document.getElementById('reportError');
   const reportFull      = document.getElementById('reportFull');
+  const reportPrintable = document.getElementById('reportPrintable');
+  const reportBizName   = document.getElementById('reportBizName');
+  const reportLocationInput = document.getElementById('reportLocation');
+
+  // The submit button stays disabled until both business name and
+  // location have real (non-whitespace) values — the report prompt
+  // depends on both, so we never want a submission missing either.
+  function updateReportSubmitState() {
+    if (!reportSubmit || !reportBizName || !reportLocationInput) return;
+    const ready = reportBizName.value.trim() !== '' && reportLocationInput.value.trim() !== '';
+    reportSubmit.disabled = !ready;
+  }
+  if (reportSubmit) reportSubmit.disabled = true;
+  if (reportBizName) reportBizName.addEventListener('input', updateReportSubmitState);
+  if (reportLocationInput) reportLocationInput.addEventListener('input', updateReportSubmitState);
 
   const REPORT_LOADING_MESSAGES = [
     'Reading your answers…',
@@ -761,70 +790,183 @@
     return [val];
   }
 
+  // Fixed titles for the 8 content sections (the report always has this
+  // same structure — only the content inside each section is generated).
+  // Used both as page headers in the printable report and as the
+  // checklist shown on the on-screen ready card.
+  const REPORT_SECTION_TITLES = [
+    'AI Readiness Snapshot',
+    'Where You Can Save Time',
+    'Where You Can Grow Revenue',
+    'Where You Can Cut Costs Without Cutting People',
+    'Tools to Explore & Getting Help',
+    'Your 90-Day Roadmap',
+    'Risks & Realistic Expectations',
+    'Next Steps',
+  ];
+
+  function renderOpportunityCards(items) {
+    return asArray(items).map(it => `
+      <li class="report-opp">
+        <p class="report-opp__title">${escapeHtml(it && it.opportunity)}</p>
+        <p class="report-opp__desc">${escapeHtml(it && it.description)}</p>
+        ${(it && it.tool_type) ? `<p class="report-opp__tools"><strong>${escapeHtml(it.tool_type)}:</strong> ${escapeHtml(asArray(it.example_tools).join(', '))}</p>` : ''}
+      </li>
+    `).join('');
+  }
+
   function renderReport(data, businessName, location) {
-    const listItems = (items) => asArray(items).map(it => `
-      <li><strong>${escapeHtml(it && it.title)}</strong><span>${escapeHtml(it && it.detail)}</span></li>
+    const snapshot = data.readiness_snapshot || {};
+    const toolsHiring = data.tools_and_hiring || {};
+    const risks = data.risks_and_expectations || {};
+    const next = data.next_steps || {};
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const toolCards = asArray(toolsHiring.recommended_tools).map(t => `
+      <div class="report-tool-card">
+        <p class="report-tool-card__name">${escapeHtml(t && t.name)}</p>
+        <p class="report-tool-card__cat">${escapeHtml(t && t.category)}</p>
+        <p class="report-tool-card__why">${escapeHtml(t && t.why)}</p>
+      </div>
     `).join('');
 
-    const toolItems = asArray(data.recommended_tools).map(t => `
-      <li><strong>${escapeHtml(t && t.name)}</strong><span>${escapeHtml(t && t.why)}</span></li>
-    `).join('');
-
-    const phases = asArray(data.plan_30_60_90).map(p => `
+    const phases = asArray(data.roadmap_90_day).map(p => `
       <div class="report-phase">
         <p class="report-phase__label">${escapeHtml(p && p.phase)}</p>
+        ${(p && p.goal) ? `<p class="report-phase__goal">${escapeHtml(p.goal)}</p>` : ''}
         <ul>${asArray(p && p.actions).map(a => `<li>${escapeHtml(a)}</li>`).join('')}</ul>
       </div>
     `).join('');
 
-    reportFull.innerHTML = `
-      <header class="report__head">
-        <p class="report__kicker">Your Full AI Action Plan</p>
-        <h3 class="report__headline">${escapeHtml(data.headline)}</h3>
-        <p class="report__meta">${escapeHtml(businessName)} &middot; ${escapeHtml(location)}</p>
-        <p class="report__summary">${escapeHtml(data.summary)}</p>
-        <button type="button" class="btn-ghost report__download" onclick="window.print()">Download as PDF &darr;</button>
-      </header>
+    // The full 9-page report — never shown on screen. It only becomes
+    // visible when the page is printed or downloaded as a PDF (see the
+    // print rules in styles.css). Each .report-print-page is forced onto
+    // its own printed page, so the page count is guaranteed by this
+    // fixed structure, not by how much text was generated.
+    reportPrintable.innerHTML = `
+      <div class="report-print-page report-print-page--title">
+        <p class="report-title__kicker">AI Adoption Action Plan</p>
+        <h1 class="report-title__headline">${escapeHtml(data.headline)}</h1>
+        <p class="report-title__biz">${escapeHtml(businessName)}</p>
+        <p class="report-title__meta">${escapeHtml(location)} &middot; ${escapeHtml(today)}</p>
+      </div>
 
-      <section class="report-block">
-        <h4>Where You Can Save Time</h4>
-        <ul class="report-block__list">${listItems(data.time_savings)}</ul>
-      </section>
+      <div class="report-print-page">
+        <header class="report-page-head">
+          <p class="report-page-head__eyebrow">Section 1 of 8 &middot; ${escapeHtml(REPORT_SECTION_TITLES[0])}</p>
+          <h2 class="report-page-head__title">${escapeHtml(REPORT_SECTION_TITLES[0])}</h2>
+        </header>
+        <p class="report-snapshot__level">${escapeHtml(snapshot.level)}</p>
+        <p class="report-snapshot__summary">${escapeHtml(snapshot.summary)}</p>
+        <div class="report-snapshot__cols">
+          <div>
+            <h4>Working In Your Favor</h4>
+            <ul>${asArray(snapshot.key_strengths).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
+          </div>
+          <div>
+            <h4>Where To Focus First</h4>
+            <ul>${asArray(snapshot.growth_areas).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
+          </div>
+        </div>
+      </div>
 
-      <section class="report-block">
-        <h4>Where You Can Grow Revenue</h4>
-        <ul class="report-block__list">${listItems(data.revenue_growth)}</ul>
-      </section>
+      <div class="report-print-page">
+        <header class="report-page-head">
+          <p class="report-page-head__eyebrow">Section 2 of 8 &middot; ${escapeHtml(REPORT_SECTION_TITLES[1])}</p>
+          <h2 class="report-page-head__title">${escapeHtml(REPORT_SECTION_TITLES[1])}</h2>
+        </header>
+        <ul class="report-opp-list">${renderOpportunityCards(data.time_savings)}</ul>
+      </div>
 
-      <section class="report-block">
-        <h4>Where You Can Cut Costs — Without Cutting People</h4>
-        <ul class="report-block__list">${listItems(data.cost_reduction)}</ul>
-      </section>
+      <div class="report-print-page">
+        <header class="report-page-head">
+          <p class="report-page-head__eyebrow">Section 3 of 8 &middot; ${escapeHtml(REPORT_SECTION_TITLES[2])}</p>
+          <h2 class="report-page-head__title">${escapeHtml(REPORT_SECTION_TITLES[2])}</h2>
+        </header>
+        <ul class="report-opp-list">${renderOpportunityCards(data.revenue_growth)}</ul>
+      </div>
 
-      <section class="report-block report-block--local">
-        <h4>Specific to ${escapeHtml(location)}</h4>
-        <p>${escapeHtml(data.local_context)}</p>
-      </section>
+      <div class="report-print-page">
+        <header class="report-page-head">
+          <p class="report-page-head__eyebrow">Section 4 of 8 &middot; ${escapeHtml(REPORT_SECTION_TITLES[3])}</p>
+          <h2 class="report-page-head__title">${escapeHtml(REPORT_SECTION_TITLES[3])}</h2>
+        </header>
+        <ul class="report-opp-list">${renderOpportunityCards(data.cost_reduction)}</ul>
+      </div>
 
-      <section class="report-block">
-        <h4>Tools Worth Trying First</h4>
-        <ul class="report-block__list">${toolItems}</ul>
-      </section>
+      <div class="report-print-page">
+        <header class="report-page-head">
+          <p class="report-page-head__eyebrow">Section 5 of 8 &middot; ${escapeHtml(REPORT_SECTION_TITLES[4])}</p>
+          <h2 class="report-page-head__title">${escapeHtml(REPORT_SECTION_TITLES[4])}</h2>
+        </header>
+        <div class="report-tools-grid">${toolCards}</div>
+        <div class="report-hiring-note">
+          <h4>Getting Extra Help</h4>
+          <p>${escapeHtml(toolsHiring.hiring_guidance)}</p>
+        </div>
+      </div>
 
-      <section class="report-block">
-        <h4>Your 30/60/90-Day Plan</h4>
+      <div class="report-print-page">
+        <header class="report-page-head">
+          <p class="report-page-head__eyebrow">Section 6 of 8 &middot; ${escapeHtml(REPORT_SECTION_TITLES[5])}</p>
+          <h2 class="report-page-head__title">${escapeHtml(REPORT_SECTION_TITLES[5])}</h2>
+        </header>
         ${phases}
-      </section>
+      </div>
+
+      <div class="report-print-page">
+        <header class="report-page-head">
+          <p class="report-page-head__eyebrow">Section 7 of 8 &middot; ${escapeHtml(REPORT_SECTION_TITLES[6])}</p>
+          <h2 class="report-page-head__title">${escapeHtml(REPORT_SECTION_TITLES[6])}</h2>
+        </header>
+        <ul class="report-risks">${asArray(risks.risks).map(r => `<li>${escapeHtml(r)}</li>`).join('')}</ul>
+        <p class="report-expectations">${escapeHtml(risks.realistic_expectations)}</p>
+      </div>
+
+      <div class="report-print-page">
+        <header class="report-page-head">
+          <p class="report-page-head__eyebrow">Section 8 of 8 &middot; ${escapeHtml(REPORT_SECTION_TITLES[7])}</p>
+          <h2 class="report-page-head__title">${escapeHtml(REPORT_SECTION_TITLES[7])}</h2>
+        </header>
+        <ol class="report-next-list">${asArray(next.steps).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ol>
+        <p class="report-closing">${escapeHtml(next.closing_message)}</p>
+      </div>
+    `;
+
+    // What actually shows on screen: a confirmation, a one-line summary,
+    // a checklist of what's in the download, and a single download
+    // button — the button triggers the same print/save-as-PDF flow,
+    // which picks up the full hidden content above.
+    reportFull.innerHTML = `
+      <p class="report-ready__kicker">Your Full AI Action Plan Is Ready</p>
+      <h3 class="report-ready__headline">${escapeHtml(data.headline)}</h3>
+      <p class="report-ready__meta">${escapeHtml(businessName)} &middot; ${escapeHtml(location)}</p>
+      <p class="report-ready__summary">${escapeHtml(data.one_line_summary)}</p>
+      <p class="report-ready__pagecount">9 pages, ready to download</p>
+      <ul class="report-ready__checklist">
+        ${REPORT_SECTION_TITLES.map(t => `<li>${escapeHtml(t)}</li>`).join('')}
+      </ul>
+      <button type="button" class="btn-primary" id="reportDownloadBtn">Download as PDF &darr;</button>
     `;
     reportFull.hidden = false;
+
+    const downloadBtn = document.getElementById('reportDownloadBtn');
+    if (downloadBtn) downloadBtn.addEventListener('click', () => window.print());
   }
 
   if (reportCtaBtn) {
     reportCtaBtn.addEventListener('click', () => {
-      reportCta.hidden = true;
-      reportForm.hidden = false;
+      diagPageSummary.hidden = true;
+      diagPageReport.hidden = false;
       const first = reportForm.querySelector('input');
       if (first) first.focus();
+    });
+  }
+
+  if (reportBack) {
+    reportBack.addEventListener('click', () => {
+      diagPageReport.hidden = true;
+      diagPageSummary.hidden = false;
     });
   }
 
