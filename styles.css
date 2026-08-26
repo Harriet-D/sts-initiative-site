@@ -2009,14 +2009,19 @@ table { border-collapse: collapse; }
 }
 
 .report-print-page--title {
-  min-height: 9in;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* Visually centered without relying on a tall flex box — a min-height
+     box forced to ~9in plus the page/modal padding overflows a single
+     printed page, and flexbox fragments that overflow badly (it dumps
+     the remainder onto a blank second page instead of trimming). Simple
+     top padding avoids that entirely while still reading as centered. */
+  padding-top: 2.6in;
   text-align: center;
-  gap: 0.6rem;
-  padding-top: 0;
+}
+.report-title__kicker,
+.report-title__headline,
+.report-title__biz {
+  margin-left: auto;
+  margin-right: auto;
 }
 .report-title__kicker {
   font-family: var(--mono);
