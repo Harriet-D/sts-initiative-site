@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════
-   STS Initiative v2 — Interactions + Diagnostic
+   STS Initiative v2, Interactions + Diagnostic
    ══════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -240,7 +240,7 @@
     operations:  'the Sector-Specific Adoption Roadmaps and Visual Storytelling System',
     costs:       'the Diagnostic Roadmap and the Plain-Language AI Glossary',
     competition: 'the Sector-Specific Roadmaps and Peer Learning Library',
-    employees:   'the Strategic Communication Modules — designed to build trust, not resistance',
+    employees:   'the Strategic Communication Modules, designed to build trust, not resistance',
   };
   const goalMap = {
     automation: 'scheduling tools, automated email responses, and AI-powered task management',
@@ -252,7 +252,7 @@
 
   /* Maps a framework resource name to an in-page destination.
      Only resources that currently exist as real, navigable content
-     are linked — everything else stays plain text until it's built. */
+     are linked, everything else stays plain text until it's built. */
   const resourceLinks = {
     'Plain-Language AI Glossary': '#glossary',
     'Sector-Specific Adoption Roadmaps': '#roadmaps',
@@ -262,17 +262,17 @@
   const profiles = {
     early: {
       name: 'Early Explorer',
-      desc: "You're at the very beginning of your AI journey — and that is exactly the right place to start. The most important step right now is building a clear, honest understanding of what AI actually is and what it can realistically do for a business like yours. There is no rush. The path is clear.",
+      desc: "You're at the very beginning of your AI journey, and that is exactly the right place to start. The most important step right now is building a clear, honest understanding of what AI actually is and what it can realistically do for a business like yours. There is no rush. The path is clear.",
       steps: [
         'Start with the Plain-Language AI Glossary to build vocabulary without jargon',
-        'Browse the Peer Learning Library — real stories from owners in your exact sector',
+        'Browse the Peer Learning Library, real stories from owners in your exact sector',
         'Return to the diagnostic in 30 days; your readiness score will likely shift',
       ],
       resources: ['Plain-Language AI Glossary', 'Peer Learning & Case Study Library', 'Visual Storytelling System'],
     },
     ready: {
       name: 'Ready Starter',
-      desc: "You have the foundation — the technology literacy, the openness, the awareness. What you need now is a structured, specific path tailored to your sector and your challenges. You are closer than you think.",
+      desc: "You have the foundation, the technology literacy, the openness, the awareness. What you need now is a structured, specific path tailored to your sector and your challenges. You are closer than you think.",
       steps: [
         'Download your Sector-Specific Adoption Roadmap for a phased, realistic plan',
         'Use the Strategic Communication Modules before introducing AI to your team',
@@ -282,7 +282,7 @@
     },
     strategic: {
       name: 'Strategic Adopter',
-      desc: "You are ahead of 82% of businesses your size. You have the technology comfort, the openness, and the awareness to move from curiosity to implementation. The question is no longer whether — it is where and in what order.",
+      desc: "You are ahead of 82% of businesses your size. You have the technology comfort, the openness, and the awareness to move from curiosity to implementation. The question is no longer whether, it is where and in what order.",
       steps: [
         'Use the full six-component framework to build your 12-month AI strategy',
         'Connect with the Peer Learning Library to find implementation partners',
@@ -540,33 +540,33 @@
   /* ──────────────── SECTOR-SPECIFIC ADOPTION ROADMAPS ──────────────── */
   const sectorRoadmaps = {
     retail: [
-      { title: 'Get Ready',        desc: 'Walk your own floor and back office for a week and note every repetitive task — reordering stock, answering the same three customer questions, building the schedule. Talk to your staff before you talk to any vendor; their buy-in now saves you a rollout fight later.' },
+      { title: 'Get Ready',        desc: 'Walk your own floor and back office for a week and note every repetitive task, reordering stock, answering the same three customer questions, building the schedule. Talk to your staff before you talk to any vendor; their buy-in now saves you a rollout fight later.' },
       { title: 'Start Small',      desc: 'Pick one narrow, low-risk tool: a chatbot that answers store-hours and return-policy questions, or a simple inventory-reorder assistant. Run it alongside your current process for 30 days rather than replacing anything outright.' },
-      { title: 'Build Confidence', desc: 'Once the first tool is routine, layer in AI-assisted scheduling or social media post drafting. Measure something concrete — hours saved per week, faster response times — so the case for the next step is evidence, not enthusiasm.' },
-      { title: 'Make It Standard', desc: 'Fold the tools that worked into how you train new hires and write your SOPs. Revisit the stack every quarter — retail moves fast, and the tool that fit you at 5 employees may not fit you at 15.' },
+      { title: 'Build Confidence', desc: 'Once the first tool is routine, layer in AI-assisted scheduling or social media post drafting. Measure something concrete, hours saved per week, faster response times, so the case for the next step is evidence, not enthusiasm.' },
+      { title: 'Make It Standard', desc: 'Fold the tools that worked into how you train new hires and write your SOPs. Revisit the stack every quarter, retail moves fast, and the tool that fit you at 5 employees may not fit you at 15.' },
     ],
     professional: [
-      { title: 'Get Ready',        desc: 'Audit where your time actually goes: intake calls, drafting routine documents, scheduling, billing. Flag anything that is high-volume and low-judgment — that is where AI has the best risk-to-reward ratio for a licensed practice.' },
-      { title: 'Start Small',      desc: 'Introduce an AI drafting assistant for routine correspondence or a scheduling/intake tool — always with a human reviewing output before it reaches a client. Keep the scope narrow enough that a mistake is easy to catch and cheap to fix.' },
+      { title: 'Get Ready',        desc: 'Audit where your time actually goes: intake calls, drafting routine documents, scheduling, billing. Flag anything that is high-volume and low-judgment, that is where AI has the best risk-to-reward ratio for a licensed practice.' },
+      { title: 'Start Small',      desc: 'Introduce an AI drafting assistant for routine correspondence or a scheduling/intake tool, always with a human reviewing output before it reaches a client. Keep the scope narrow enough that a mistake is easy to catch and cheap to fix.' },
       { title: 'Build Confidence', desc: 'Extend into research support or document summarization for case or client files, with the same review discipline. Track time saved per engagement so you can show clients and staff the tool is adding rigor, not cutting corners.' },
       { title: 'Make It Standard', desc: 'Write the review step into your firm\'s standard workflow so it survives staff turnover. Reassess annually against your licensing board\'s guidance, since professional-services AI rules are still evolving.' },
     ],
     manufacturing: [
-      { title: 'Get Ready',        desc: 'Map your production floor for the slowest or most error-prone manual step — often quality inspection, inventory counts, or maintenance scheduling. Loop in your floor supervisors early; they will spot the practical obstacles you can\'t see from the office.' },
+      { title: 'Get Ready',        desc: 'Map your production floor for the slowest or most error-prone manual step, often quality inspection, inventory counts, or maintenance scheduling. Loop in your floor supervisors early; they will spot the practical obstacles you can\'t see from the office.' },
       { title: 'Start Small',      desc: 'Pilot one contained tool, such as predictive-maintenance alerts on a single machine line or an AI-assisted inventory count, before touching anything safety-critical. A small, visible win builds trust for the next step.' },
-      { title: 'Build Confidence', desc: 'Expand successful pilots to additional lines and add AI-assisted quality inspection or demand forecasting. Keep a paper trail of defect-rate or downtime changes — trades crews and owners alike respond to numbers, not slogans.' },
+      { title: 'Build Confidence', desc: 'Expand successful pilots to additional lines and add AI-assisted quality inspection or demand forecasting. Keep a paper trail of defect-rate or downtime changes, trades crews and owners alike respond to numbers, not slogans.' },
       { title: 'Make It Standard', desc: 'Bake the tools into standard operating procedure and new-hire training. Schedule a yearly review tied to your equipment maintenance cycle so the technology stays aligned with what\'s actually on the floor.' },
     ],
     health: [
-      { title: 'Get Ready',        desc: 'Identify the administrative burden that is not direct patient care — scheduling, intake forms, appointment reminders, billing follow-up. Confirm with your compliance advisor which categories of tool are appropriate for your license type before you evaluate vendors.' },
+      { title: 'Get Ready',        desc: 'Identify the administrative burden that is not direct patient care, scheduling, intake forms, appointment reminders, billing follow-up. Confirm with your compliance advisor which categories of tool are appropriate for your license type before you evaluate vendors.' },
       { title: 'Start Small',      desc: 'Start with a narrow administrative tool, such as automated appointment reminders or intake-form digitization, that never touches clinical decision-making. Run it in parallel with your existing process until staff trust it.' },
       { title: 'Build Confidence', desc: 'Add patient-communication tools like automated follow-up messages or wait-time updates. Track no-show rates and patient-satisfaction feedback so you can show the change is helping care delivery, not just cutting cost.' },
       { title: 'Make It Standard', desc: 'Formalize the tools into your practice\'s standard operating procedures and staff onboarding. Revisit annually with your compliance advisor as healthcare AI guidance continues to develop.' },
     ],
     construction: [
-      { title: 'Get Ready',        desc: 'Look at where estimating, scheduling, or subcontractor coordination eats the most time between bid and breaking ground. Talk to your project leads and field crews first — the tool has to survive a job site, not just a demo.' },
+      { title: 'Get Ready',        desc: 'Look at where estimating, scheduling, or subcontractor coordination eats the most time between bid and breaking ground. Talk to your project leads and field crews first, the tool has to survive a job site, not just a demo.' },
       { title: 'Start Small',      desc: 'Pilot one tool with clear ROI, like AI-assisted cost estimating or a scheduling assistant that tracks subcontractor availability. Test it on a single project before rolling it out company-wide.' },
-      { title: 'Build Confidence', desc: 'Layer in progress-tracking tools — photo-based site documentation or AI-assisted punch-list management. Compare bid accuracy and schedule slippage before and after so the numbers make the case to your crews.' },
+      { title: 'Build Confidence', desc: 'Layer in progress-tracking tools, photo-based site documentation or AI-assisted punch-list management. Compare bid accuracy and schedule slippage before and after so the numbers make the case to your crews.' },
       { title: 'Make It Standard', desc: 'Write the successful tools into your standard bidding and project-management process. Reassess each season, since crew composition and project mix on a construction business change more than most.' },
     ],
   };
@@ -711,7 +711,7 @@
   /* Uses the same Worker as the Communication Modules generator, with
      type: 'report' in the request telling it which prompt/model to use.
      Reuses the diagnostic's own questions array to turn stored answer
-     codes back into plain-English labels — the 11 questions themselves
+     codes back into plain-English labels, the 11 questions themselves
      are never touched by any of this. */
   const REPORT_WORKER_URL = COMMS_WORKER_URL;
 
@@ -730,7 +730,7 @@
   const reportLocationInput = document.getElementById('reportLocation');
 
   // The submit button stays disabled until both business name and
-  // location have real (non-whitespace) values — the report prompt
+  // location have real (non-whitespace) values, the report prompt
   // depends on both, so we never want a submission missing either.
   function updateReportSubmitState() {
     if (!reportSubmit || !reportBizName || !reportLocationInput) return;
@@ -781,8 +781,7 @@
   }
 
   // Guards against the AI's response coming back slightly differently
-  // shaped than expected (e.g. one object instead of a list of them) —
-  // the Worker normalizes this too, but the page shouldn't crash even
+  // shaped than expected (e.g. one object instead of a list of them), // the Worker normalizes this too, but the page shouldn't crash even
   // if it somehow receives something unexpected.
   function asArray(val) {
     if (Array.isArray(val)) return val;
@@ -791,7 +790,7 @@
   }
 
   // Fixed titles for the 8 content sections (the report always has this
-  // same structure — only the content inside each section is generated).
+  // same structure, only the content inside each section is generated).
   // Used both as page headers in the printable report and as the
   // checklist shown on the on-screen ready card.
   const REPORT_SECTION_TITLES = [
@@ -838,7 +837,7 @@
       </div>
     `).join('');
 
-    // The full 9-page report — never shown on screen. It only becomes
+    // The full 9-page report, never shown on screen. It only becomes
     // visible when the page is printed or downloaded as a PDF (see the
     // print rules in styles.css). Each .report-print-page is forced onto
     // its own printed page, so the page count is guaranteed by this
@@ -935,7 +934,7 @@
 
     // What actually shows on screen: a confirmation, a one-line summary,
     // a checklist of what's in the download, and a single download
-    // button — the button triggers the same print/save-as-PDF flow,
+    // button, the button triggers the same print/save-as-PDF flow,
     // which picks up the full hidden content above.
     reportFull.innerHTML = `
       <p class="report-ready__kicker">Your Full AI Action Plan Is Ready</p>
